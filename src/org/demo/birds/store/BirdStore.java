@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Отнаследоваться от AbstractBirdStore.
@@ -14,7 +15,7 @@ import java.util.Map;
  */
 
 public class BirdStore extends AbstractBirdStore {
-     private Map birdStore = new HashMap();
+     private ConcurrentHashMap<Object,String> birdStore = new ConcurrentHashMap<>();
 
     private static BirdStore singltoneBirdStore = new BirdStore();
 
@@ -27,7 +28,7 @@ public class BirdStore extends AbstractBirdStore {
 
     @Override
     public void addBird(Bird b) {
-        birdStore.put(b, b.getLivingArea());
+        birdStore.putIfAbsent(b, b.getLivingArea());
 
 
     }
