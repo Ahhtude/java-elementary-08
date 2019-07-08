@@ -1,4 +1,4 @@
-package polls.ThreadPoolExecutor;
+package polls.PoolExecutor;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
